@@ -52,13 +52,12 @@ const addCategory = async (req, res) => {
 };
 
 const updateCategory = async (req, res) => {
-  const categoriesId = parseInt(req.params.id);
+  const id = parseInt(req.params.id);
   const { name } = req.body;
-  const { type, id } = req.user;
 
   pool.query(
     queries.updateCategory,
-    [name, type, id, categoriesId],
+    [name, req.user.type, req.user.id, id],
     (err, result) => {
       if (err) {
         console.log(err);
