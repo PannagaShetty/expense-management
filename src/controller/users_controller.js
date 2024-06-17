@@ -68,4 +68,8 @@ const signup = async (req, res) => {
   }
 };
 
-module.exports = { login, signup };
+const getCurrentUser = async (req, res) => {
+  res.status(200).json(req.user);
+};
+
+module.exports = { login, signup, getCurrentUser };
